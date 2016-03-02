@@ -1,7 +1,7 @@
 module.exports = function generateArrayWithRandomNumbers(number_of_items_in_array) {
     var newArray = [];
     var min = 0,
-        max = 1000;
+        max = 100;
 
     var randomNumber = function() {
         // Returns a random number between min (inclusive) and max (exclusive)

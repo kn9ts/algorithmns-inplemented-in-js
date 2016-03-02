@@ -5,7 +5,7 @@ console.log('Generated unsorted array: [' + arr.join(', ') + ']');
 
 // ALL THE MAGIC HAPPENS HERE
 var currentSmallestUnsortedValue = undefined;
-for (var x = 0, arrLength = arr.length; x < arrLength; x++) {
+for (var x = 0, arrayLength = arr.length; x < arrayLength; x++) {
     // In every loop, find the smallest value in the unsorted array section
     // This is all of it in the 1st loop
     // eventually it's (x + 1) x being the last index to be sorted
