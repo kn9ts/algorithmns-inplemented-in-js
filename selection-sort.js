@@ -1,6 +1,6 @@
 // Import random number array generator
-var generateRandomNumbersArray = require('./random-numbers');
-var arr = generateRandomNumbersArray(10);
+var generateArrayWithRandomNumbers = require('./random-numbers');
+var arr = generateArrayWithRandomNumbers(10);
 console.log('Generated unsorted array: [' + arr.join(', ') + ']');
 
 function findNextSmallestUnsortedValue(array, lastSortedIndex) {

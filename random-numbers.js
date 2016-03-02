@@ -1,4 +1,4 @@
-module.exports = function generateRandomNumbersArray(number_of_items_in_array) {
+module.exports = function generateArrayWithRandomNumbers(number_of_items_in_array) {
     var newArray = [];
     var min = 0,
         max = 1000;
