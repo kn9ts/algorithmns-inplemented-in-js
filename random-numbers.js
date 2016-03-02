@@ -1,9 +1,9 @@
-module.exports = function generateRandomNumbersArray(number_of_numbers) {
+module.exports = function generateRandomNumbersArray(number_of_items_in_array) {
     var newArray = [];
     var min = 0,
         max = 1000;
 
-    for (var x = 0; x < number_of_numbers; x++) {
+    var randomNumber = function() {
         // Returns a random number between min (inclusive) and max (exclusive)
         // Math.random() * (max - min) + min;
 
@@ -11,13 +11,18 @@ module.exports = function generateRandomNumbersArray(number_of_numbers) {
         // Math.floor(Math.random() * (max - min)) + min;
 
         // Returns a random integer between min (included) and max (included)
-        randomNumber = Math.random() * (max - min + 1);
-        randomNumber = Math.round(randomNumber) + min;
-        newArray.push(randomNumber);
+        number = Math.random() * (max - min + 1);
+        number = Math.round(number) + min;
+        return number;
+    }
+
+    // TODO: Make sure
+    for (var x = 0; x < number_of_items_in_array; x++) {
+        var number = randomNumber();
+        if (newArray.indexOf(number) == -1) {
+            newArray.push(number);
+        }
     }
 
     return newArray;
 }
-
-// Testing...
-// console.log(generateRandomNumbersArray(5));
