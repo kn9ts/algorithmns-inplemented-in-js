@@ -2,22 +2,25 @@
 var generateArrayWithRandomNumbers = require('./random-numbers');
 var arr = generateArrayWithRandomNumbers(10);
 console.log('Generated unsorted array: [' + arr.join(', ') + ']');
+
 // ALL THE MAGIC HAPPENS HERE
 var number = undefined;
 for (var x = 0, arrayLength = arr.length; x < arrayLength; x++) {
     // Index 0 is usually sorted
     if (x !== 0) {
         var number = arr[x];
-        insertNumberToItsRightfulPosition(arr, number, x);
+        insertNumberInItsCorrectSortedPosition(arr, number, x - 1);
     }
 }
 
-function insertNumberToItsRightfulPosition(arr, number, currentIndexPosition) {
+function insertNumberInItsCorrectSortedPosition(arr, number, lastRightIndexPosition) {
     // Start from the current number's position downwards/leftwards (<---)
-    for (var x = currentIndexPosition - 1; x >= 0; x--) {
-        // Check if the number position before the current one in question
-        // is larger than it, if it is, shift it to the right and shift the number
-        // to the left untill there's no number to it's that is larger than it
+    for (var x = lastRightIndexPosition; x >= 0; x--) {
+        // Check if the number to the left of the arr from the current position we are,
+        // is larger than the number we want to sort,
+        // if it is, shift the numberToSort to the left
+        // until there's no number to it's left that is larger than it
+        // We then insert it to the right of the number smaller than it
         if (arr[x] > number) {
             arr[x + 1] = arr[x];
             arr[x] = number;
