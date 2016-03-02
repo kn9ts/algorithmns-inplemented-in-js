@@ -3,7 +3,7 @@ var generateRandomNumbersArray = require('./random-numbers');
 var arr = generateRandomNumbersArray(10);
 console.log('Generated unsorted array: [' + arr.join(', ') + ']');
 
-function findSmallestUnsortedNumber(array, lastSortedIndex) {
+function findNextSmallestUnsortedValue(array, lastSortedIndex) {
     var currentSmallestUnsortedValue = arr[lastSortedIndex];
     for (var x = lastSortedIndex, length = array.length; x < length; x++) {
         if (currentSmallestUnsortedValue > array[x]) {
@@ -13,18 +13,19 @@ function findSmallestUnsortedNumber(array, lastSortedIndex) {
     return currentSmallestUnsortedValue;
 }
 
-function swapSmallestValueWithFirstUnsortedValue(arr, sortedIndex, smallestValue) {
-    var toBeSwappedNumber = arr[sortedIndex],
+function swapSmallestValueWithFirstUnsortedValueInArray(arr, lastSortedIndex, smallestValue) {
+    var numberToBeSwapped = arr[lastSortedIndex],
         currentIndexOfSmallestValue = arr.indexOf(smallestValue);
-    arr[sortedIndex] = smallestValue;
-    arr[currentIndexOfSmallestValue] = toBeSwappedNumber;
+
+    arr[lastSortedIndex] = smallestValue;
+    arr[currentIndexOfSmallestValue] = numberToBeSwapped;
 }
 
 
-var smallestValue = undefined;
+var currentSmallestUnsortedValue = undefined;
 for (var x = 0, arrLength = arr.length; x < arrLength; x++) {
-    smallestValue = findSmallestUnsortedNumber(arr, x);
-    swapSmallestValueWithFirstUnsortedValue(arr, x, smallestValue);
+    currentSmallestUnsortedValue = findNextSmallestUnsortedValue(arr, x);
+    swapSmallestValueWithFirstUnsortedValueInArray(arr, x, currentSmallestUnsortedValue);
 }
 
 // Print out the sorted array
