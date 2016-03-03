@@ -8,13 +8,16 @@ var number = undefined;
 for (var x = 0, arrayLength = arr.length; x < arrayLength; x++) {
     // Index 0 is usually sorted
     if (x !== 0) {
-        var number = arr[x];
-        insertNumberInItsCorrectSortedPosition(arr, number, x - 1);
+        // in each loop, find the smallest number in the unsorted subarray
+        // [move/shift] it to the right until the number to it's right is smaller than it
+        // in 1st loop, none is. From the 2nd loop, it's (x - 1)
+        // x being the index of the last sorted number/item
+        insertSort(arr, arr[x], x - 1);
     }
 }
 
-function insertNumberInItsCorrectSortedPosition(arr, number, lastRightIndexPosition) {
-    // Start from the current number's position downwards/leftwards (<---)
+function insertSort(arr, number, lastRightIndexPosition) {
+    // Optimisation: start from the current number's position downwards/leftwards (<---)
     for (var x = lastRightIndexPosition; x >= 0; x--) {
         // Check if the number to the left of the arr from the current position we are,
         // is larger than the number we want to sort,

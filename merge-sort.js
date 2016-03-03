@@ -21,18 +21,21 @@ function splitArrayRecusively(input) {
     var pivot = Math.floor(input.length / 2);
     var leftSubArray = input.slice(0, pivot);
     var rightSubArray = input.slice(pivot, input.length);
-    return mergeArrays(
+
+    return sortAndMergeArrays(
         splitArrayRecusively(leftSubArray),
         splitArrayRecusively(rightSubArray)
     );
 }
 
-function mergeArrays(left, right) {
+function sortAndMergeArrays(left, right) {
     var sortedArray = [];
     // console.log(sortedArray, left, right, left[0], right[0]);
 
     while (left && left.length > 0 && right && right.length > 0) {
         if (left[0] <= right[0]) {
+            // array.shift() method removes the first element
+            // from an array and returns that element
             sortedArray.push(left.shift());
             // console.log("left", left, right);
         } else {
@@ -41,5 +44,6 @@ function mergeArrays(left, right) {
         }
     }
 
-    return sortedArray.concat(left, right);
+    // Call concat on sortedArray, merging left and right into it
+    return [].concat.call(sortedArray, left, right);
 }

@@ -6,13 +6,15 @@ console.log('Generated unsorted array: [' + arr.join(', ') + ']');
 // ALL THE MAGIC HAPPENS HERE
 var currentSmallestUnsortedValue = undefined;
 for (var x = 0, arrayLength = arr.length; x < arrayLength; x++) {
-    // In every loop, find the smallest value in the unsorted array section
+    // In each loop, find the smallest value in the unsorted sub array part
     // This is all of it in the 1st loop
-    // eventually it's (x + 1), x being the last index to be sorted
+    // eventually it's (x + 1),
+    // x being the index of the last item/number sorted
     currentSmallestUnsortedValue = findNextSmallestUnsortedValue(arr, x);
 
-    // Then swap the unsorted value next, or right after the last sorted value with
-    // The current smallest unsorted value
+    // Then swap the unsorted value
+    // to the right of the last sorted value
+    // with the current smallest unsorted value
     swapSmallestValueWithFirstUnsortedValueInArray(arr, x, currentSmallestUnsortedValue);
 }
 
